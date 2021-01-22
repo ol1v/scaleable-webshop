@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class CheapestForFree implements DiscountStrategy{
+
+    double lowest = 0;
+
     @Override
     public String getDiscountName() {
         return null;
@@ -13,6 +16,13 @@ public class CheapestForFree implements DiscountStrategy{
 
     @Override
     public BigDecimal totalDiscount(ArrayList<ShoppingCartItem> items) {
-        return null;
+        var sum = BigDecimal.ZERO;
+        for(var item: items) {
+            if(items.size() > 3 && lowest == 0 || item.itemCost().doubleValue() < lowest) {
+                lowest = item.itemCost().doubleValue();
+            }
+            sum = item.itemCost().multiply(BigDecimal.valueOf(item.quantity())).add(sum);
+        }
+        return sum.subtract((new BigDecimal(lowest)));
     }
 }
