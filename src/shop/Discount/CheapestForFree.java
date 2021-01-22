@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class CheapestForFree implements DiscountStrategy{
 
+    private String discountName = "Cheapest item for free";
     double lowest = 0;
 
     @Override
