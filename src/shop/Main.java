@@ -7,7 +7,7 @@ public class Main {
         Product carrots = new Product("Carrots");
         Product sausage = new Product("Sausage");
 
-        ShoppingCartItem test1 = new ShoppingCartItem(cheese, 31.50, 1);
+        ShoppingCartItem test1 = new ShoppingCartItem(cheese, 499.50, 1);
         ShoppingCartItem test2 = new ShoppingCartItem(carrots, 12.99, 1);
         ShoppingCartItem test3 = new ShoppingCartItem(sausage, 45.00, 1);
 

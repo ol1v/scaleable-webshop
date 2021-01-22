@@ -23,7 +23,7 @@ public class DiscountContext {
     }
 
     public DiscountStrategy choosenDiscount() {
-        DiscountStrategy activeDiscount = new ThreeForTwo();
+        DiscountStrategy activeDiscount = new CheapestForFree();
 
         ArrayList<DiscountStrategy> discounts = new ArrayList<DiscountStrategy>();
         discounts.add(new ThreeForTwo());
