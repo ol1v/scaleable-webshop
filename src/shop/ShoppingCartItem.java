@@ -13,7 +13,7 @@ public class ShoppingCartItem {
         this.quantity = quantity;
     }
 
-    public int quantity(){
+    public int quantity() {
         return quantity;
     }
 
@@ -44,3 +44,4 @@ public class ShoppingCartItem {
         result = 31 * result + quantity;
         return result;
     }
+}
