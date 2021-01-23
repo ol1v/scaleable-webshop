@@ -24,7 +24,6 @@ public class Main {
         cart.addCartItem(test3);
 
         System.out.println(cart.receipt());
-        System.out.println("DISCOUNT: 10%");
 
 
             // Undo redo
@@ -33,6 +32,8 @@ public class Main {
 
         cart.undo(stack);
         cart.redo(stack);
+        cart.undo(stack);
+        cart.undo(stack);
         cart.undo(stack);
 
 
@@ -45,8 +46,21 @@ public class Main {
 
         cart.addCartItem(test4);
 
-        System.out.println("\n NEW RECEIPT");
+        System.out.println("\n\n\n NEW RECEIPT");
         System.out.println(cart.receipt());
-        System.out.println("DISCOUNT: 3 for 2");
+
+        /** ##############################################
+         *  ############# Cheapest item for free #########
+         *  ############################################## **/
+
+        cart.undo(stack); // removing apples
+
+        cart.addCartItem(test2);
+        cart.addCartItem(test3);
+        cart.addCartItem(test3);
+        cart.addCartItem(test2);
+
+        System.out.println("\n\n\n NEW RECEIPT");
+        System.out.println(cart.receipt());
     }
 }

@@ -12,7 +12,7 @@ public class CheapestForFree implements DiscountStrategy{
 
     @Override
     public String getDiscountName() {
-        return null;
+        return discountName;
     }
 
     @Override

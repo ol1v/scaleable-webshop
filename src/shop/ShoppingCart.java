@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public class ShoppingCart {
 
     private final ArrayList<ShoppingCartItem> items = new ArrayList<>();
+    DiscountContext discount = new DiscountContext(items);
 
     public void addCartItem(ShoppingCartItem item){
         items.add(item);
@@ -24,17 +25,9 @@ public class ShoppingCart {
     }
 
     public BigDecimal calculatePrice(){
-
-        DiscountContext discount = new DiscountContext(items);
         DiscountStrategy calcDiscount = discount.choosenDiscount();
-        BigDecimal totalDiscount = discount.checkDiscount(calcDiscount);
 
-        var sum = BigDecimal.ZERO;
-
-        for (var item: items) {
-            sum = item.itemCost().multiply(BigDecimal.valueOf(item.quantity())).add(sum);
-        }
-        return totalDiscount;
+        return discount.checkDiscount(calcDiscount);
     }
 
     public void undo(HistoryStack stack){
@@ -45,7 +38,7 @@ public class ShoppingCart {
 
     public void redo(HistoryStack stack){
         //Redo the latest change to the ShoppingCart
-        stack.undoChanges();
+        stack.redoChanges();
     }
 
     public String receipt() {
@@ -60,6 +53,7 @@ public class ShoppingCart {
         }
         sb.append(line);
         sb.append(String.format("%24s% 8.2f", "TOTAL:", calculatePrice()));
+        sb.append(String.format("\n%24s", "DISCOUNT:" + discount.getName()));
         return sb.toString();
     }
 }

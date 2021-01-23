@@ -41,4 +41,8 @@ public class DiscountContext {
 
         return activeDiscount;
     }
+
+    public String getName() {
+        return strategy.getDiscountName();
+    }
 }
